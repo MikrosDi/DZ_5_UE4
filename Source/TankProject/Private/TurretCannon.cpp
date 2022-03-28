@@ -5,6 +5,7 @@
 
 #include "DamageTarget.h"
 #include "DrawDebugHelpers.h"
+#include "EnemyPawn.h"
 #include "Components/AudioComponent.h"
 #include "Particles/ParticleSystemComponent.h"
 
@@ -46,9 +47,8 @@ void ATurretCannon::TurretShoot(int& AmmoII)
 				GEngine->AddOnScreenDebugMessage(-1, 1,FColor::Red,FString(TEXT("")));
 				auto Projectile = GetWorld()->SpawnActor<AProjectile>(ProjectileClass,ProjectileSpawnPoint->GetComponentLocation(),ProjectileSpawnPoint->GetComponentRotation());
 				Projectile->SetInstigator(GetInstigator());
-				ShootEffect->ActivateSystem();
-				AudioEffect->Play();
-				AmmoII--;
+				//ShootEffect->ActivateSystem();
+				//AudioEffect->Play();
 				//GEngine->AddOnScreenDebugMessage(-1234, 1, FColor::Blue, FString::Printf(TEXT("AmmoII - %i"), AmmoII));
 				break;
 			}
@@ -60,6 +60,9 @@ void ATurretCannon::TurretShoot(int& AmmoII)
 				AudioEffect->Play();
 				FHitResult Result;
 				FCollisionObjectQueryParams Params;
+				FCollisionQueryParams Params1;
+				Params1.AddIgnoredActor(this);
+				Params1.AddIgnoredComponent(ProjectileSpawnPoint);
 				Params.AddObjectTypesToQuery(ECollisionChannel::ECC_Vehicle);
 				Params.AddObjectTypesToQuery(ECollisionChannel::ECC_WorldDynamic);
 				Params.AddObjectTypesToQuery(ECollisionChannel::ECC_WorldStatic);
@@ -89,6 +92,7 @@ void ATurretCannon::TurretShoot(int& AmmoII)
 				break;
 			}
 		}
+	
 			bReadyToShootTurret = false;
 	        GetWorld()->GetTimerManager().SetTimer(TurretTimerHandle, FTimerDelegate::CreateUObject(this, &ATurretCannon::ResetShootStateTurret), 1 / FireRate1, false);
     }

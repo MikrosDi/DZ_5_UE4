@@ -39,7 +39,7 @@ public:
 	float RotationSpeed =89;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
-	float RotationAcceleration = 0.06;
+	float RotationAcceleration = 0.15;
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadWrite, Category = "Movement")
 	float TurretAcceleration = 0.6;
@@ -104,5 +104,7 @@ UPrimitiveComponent* OtherComponent, int I, bool bArg, const FHitResult& HitResu
 	TWeakObjectPtr<AActor> Target;
 	
 	class ITargetController* TargetController;
+
+	
 
 };

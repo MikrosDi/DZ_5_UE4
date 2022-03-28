@@ -12,8 +12,8 @@
 #include "Kismet/KismetSystemLibrary.h"
 #include "TankProject/TankProject.h"
 #include "HealthComponent.h"
-
-
+#include "Components/AudioComponent.h"
+#include "Particles/ParticleSystemComponent.h"
 
 
 // Sets default values
@@ -32,6 +32,12 @@ ATankPawn::ATankPawn():AParentStarterClass()
 	
 	HealthComponent->OnHealthChanged.AddUObject(this, &ATankPawn::OnHealthChanged);
 	HealthComponent->OnDeath.AddUObject(this, &ATankPawn::OnDeath);
+
+		AudioTakeHitEffect = CreateDefaultSubobject<UAudioComponent>("AudioEffect");
+		AudioTakeHitEffect->SetupAttachment(BodyMesh);
+
+		TakeHitEffect = CreateDefaultSubobject<UParticleSystemComponent>("ShootEffect");
+		TakeHitEffect->SetupAttachment(BodyMesh);
 }
 
 

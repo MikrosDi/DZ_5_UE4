@@ -76,6 +76,8 @@ public:
 	
 	FTimerHandle TurretTimerHandle;
 	bool bReadyToShootTurret = true;
+
+	
 	
 
 };

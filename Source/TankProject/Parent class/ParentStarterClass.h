@@ -34,14 +34,7 @@ public:
 
 	UPROPERTY(VisibleAnywhere, BlueprintReadOnly, Category="Score")
 	int Points = 0;
-
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	//UParticleSystemComponent* DestroyEffect;
-
-	//UPROPERTY(VisibleDefaultsOnly, BlueprintReadWrite, Category = "Components")
-	//UAudioComponent* AudioDestroyEffect;
-
-
+	
 	virtual void TakeDamage(FDamageData Damage) override;
 
 	void ReceivePoints(int InPoints);

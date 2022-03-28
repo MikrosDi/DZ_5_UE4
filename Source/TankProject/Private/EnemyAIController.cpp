@@ -80,7 +80,7 @@ void AEnemyAIController::Tick(float DeltaSeconds)
 		}
 	} else if (EnemyPawn)
 	{
-		auto LookAt = EnemyPawn->TurretMesh->GetComponentLocation() + EnemyPawn->GetActorForwardVector() * 666;
+		auto LookAt = EnemyPawn->TurretMesh->GetComponentLocation() + EnemyPawn->GetActorForwardVector() * 100;
 		auto TargetRotation = UKismetMathLibrary::FindLookAtRotation(EnemyPawn->TurretMesh->GetComponentLocation(),LookAt);
 		EnemyPawn->TurretMesh->SetWorldRotation(FMath::Lerp(EnemyPawn->TurretMesh->GetComponentRotation(), TargetRotation, TargetingSpeed));
 		
@@ -184,7 +184,7 @@ void AEnemyAIController::FindNextTarget()
 			auto TankPawn = Cast<ATankPawn>(Actor);
 			if (TankPawn)
 			{
-				Target = TankPawn;
+				Target = Actor;
 			}
 		}
 	}

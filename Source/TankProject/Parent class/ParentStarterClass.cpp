@@ -30,12 +30,7 @@ AParentStarterClass::AParentStarterClass()
 	CannonPosition->SetupAttachment(TurretMesh);
 	
 	HealthComponent = CreateDefaultSubobject<UHealthComponent>("HealthComponent");
-
-//	AudioDestroyEffect = CreateDefaultSubobject<UAudioComponent>("AudioEffect");
-//	AudioDestroyEffect->SetupAttachment(BodyMesh);
-
-//	DestroyEffect = CreateDefaultSubobject<UParticleSystemComponent>("ShootEffect");
-//	DestroyEffect->SetupAttachment(BodyMesh);
+	
 }
 
 void AParentStarterClass::TakeDamage(FDamageData Damage)
